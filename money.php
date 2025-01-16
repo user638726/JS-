@@ -65,22 +65,20 @@
     let sum = 0;
     let tmpObj = {};
     for (let i = 1; i <= 10; i++) {
-        if (sum == 0) {
-            sum = originMoney;
-        }
+        let sum = (i === 1) ? originMoney : tmpObj[i - 1].sum; // 计算每年的金额
         console.log(`o 第${i}年 => ${sum}`);
-        tmpObj[i] = sum;
+        tmpObj[i] = {
+            sum: sum
+        };
 
         sum = Number(((sum) * rate).toFixed(2));
-
-
         console.log(`c 第${i}年 => ${sum}`);
-
+        tmpObj[i].sum = sum;
     }
+
     tmpObj['name'] = '第一年';
 
-
-    console.log('tmpObj', tmpObj);
+    // 加入第二年的数
 
 
 
@@ -122,25 +120,76 @@
     const myTable = $('#myTable');
     const myTbody = myTable.find('tbody');
 
-    console.log('tmpObj', tmpObj);
+    //console.log('tmpObj.name', tmpObj.name);
 
     // 2.action
-    let tmpText = `
-                <tr>
-                    <td class="tdname">${tmpObj['name']}</td>
-                    <td class="td1">${tmpObj[1]}</td>
-                    <td class="td2">${tmpObj[2]}</td>
-                    <td class="td3">${tmpObj[3]}</td>
-                    <td class="td4">${tmpObj[4]}</td>
-                    <td class="td5">${tmpObj[5]}</td>
-                    <td class="td6">${tmpObj[6]}</td>
-                    <td class="td7">${tmpObj[7]}</td>
-                    <td class="td8">${tmpObj[8]}</td>
-                    <td class="td9">${tmpObj[9]}</td>
-                    <td class="td10">${tmpObj[10]}</td>
-                </tr>
-        `;
-    myTbody.append(tmpText);
+
+    $(document).ready(function() {
+        // 顯示第一年的數據let 
+        myArr = [{
+                name: 1,
+                1: origin,
+                2: tmp * rate,
+                3: 11.66,
+                4: 12.60,
+                5: 13.60,
+                6: 14.69,
+                7: 15.87,
+                8: 17.14,
+                9: 18.51,
+                10: 19.99
+            },
+            {
+                name: 2,
+                1: 0.00,
+                2: 20.80,
+                3: 22.46,
+                4: 24.26,
+                5: 26.20,
+                6: 28.30,
+                7: 30.56,
+                8: 33.01,
+                9: 35.65,
+                10: 38.50
+            }
+        ]
+        let tmpText = `
+        <tr>
+            <td class="tdname">${tmpObj['name']}</td>
+            <td class="td1">${tmpObj[1].sum}</td>
+            <td class="td2">${tmpObj[2].sum}</td>
+            <td class="td3">${tmpObj[3].sum}</td>
+            <td class="td4">${tmpObj[4].sum}</td>
+            <td class="td5">${tmpObj[5].sum}</td>
+            <td class="td6">${tmpObj[6].sum}</td>
+            <td class="td7">${tmpObj[7].sum}</td>
+            <td class="td8">${tmpObj[8].sum}</td>
+            <td class="td9">${tmpObj[9].sum}</td>
+            <td class="td10">${tmpObj[10].sum}</td>
+        </tr>
+    `;
+        myTbody.append(tmpText);
+
+        // 顯示第二年的數據
+        let secondYearData = myArr[1]; // 這是第二年的數據
+
+        let secondYearText = `
+        <tr>
+            <td class="tdname">第${secondYearData['name']}年</td>
+            <td class="td1">${secondYearData[1]}</td>
+            <td class="td2">${secondYearData[2]}</td>
+            <td class="td3">${secondYearData[3]}</td>
+            <td class="td4">${secondYearData[4]}</td>
+            <td class="td5">${secondYearData[5]}</td>
+            <td class="td6">${secondYearData[6]}</td>
+            <td class="td7">${secondYearData[7]}</td>
+            <td class="td8">${secondYearData[8]}</td>
+            <td class="td9">${secondYearData[9]}</td>
+            <td class="td10">${secondYearData[10]}</td>
+        </tr>
+    `;
+        myTbody.append(secondYearText);
+    });
     </script>
 </body>
 
