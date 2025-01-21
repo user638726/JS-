@@ -70,7 +70,7 @@
         }
 
         to {
-            transform: translate(600px);
+            transform: translate(900px);
             /* 指定最後位移 400px, 100px */
         }
     }
