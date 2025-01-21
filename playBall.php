@@ -187,7 +187,7 @@
             // 三分球 0-30
             // feature
             console.log('tmpTime', tmpTime);
-            if (tmpTime <= 10) {
+            if (tmpTime <= 30) {
                 scoreVar += 3;
             } else {
                 scoreVar += 2;
