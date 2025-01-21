@@ -127,8 +127,15 @@
         const resetBtn = $('#resetBtn');
 
         let scoreVar = 0;
-        let scoreHighVar = 0;
-        let timeVar = 20;
+
+        // 預設0 有最高 就抓最高分數
+        // localStorage.setItem('highScore', 0);
+        // let scoreHighVar = 0;
+        let scoreHighVar = localStorage.getItem('highScore');
+        console.log('scoreHighVar', scoreHighVar);
+
+
+        let timeVar = 60;
         let gameFlag = true;
         let tmpTime = 0;
 
@@ -177,6 +184,7 @@
             }
             // 兩分球 31-60
             // 三分球 0-30
+            // feature
             console.log('tmpTime', tmpTime);
             if (tmpTime <= 10) {
                 scoreVar += 3;
@@ -184,14 +192,32 @@
                 scoreVar += 2;
             }
 
-
-
+            // 最高分數 < 目前分數
+            if (scoreHighVar < scoreVar) {
+                localStorage.setItem('highScore', scoreVar);
+                highScore.text(scoreVar);
+            }
 
             nowScore.text(scoreVar);
         });
 
         resetBtn.click(function(e) {
             console.log('resetBtn ok');
+            // 倒數計時 60
+            // 分數 0
+
+            // 倒數計時 60
+            tmpTime = 0
+            timer.text(timeVar);
+            console.log('timeVar', timeVar);
+            console.log('tmpTime', tmpTime);
+            // gameFlag false false
+            gameFlag = true;
+            console.log('gameFlag', gameFlag);
+
+            // 分數 0
+            scoreVar = 0;
+            nowScore.text(scoreVar);
         });
 
 
