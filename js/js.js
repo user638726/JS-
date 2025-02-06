@@ -1,0 +1,2 @@
+let pw = "CWA-624371E0-DEC9-4EBE-9A3E-596837C3FCE2";
+console.log(pw);
