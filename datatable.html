@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link css 順序 1.bs 2.self -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+</head>
+
+<body>
+
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th></th>
+                <th id="th-time1">time1</th>
+                <th id="th-time2">time2</th>
+                <th id="th-time3">time3</th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- datatable -->
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script src="./js/js.js"></script>
+    <script>
+        $(document).ready(function () {
+            let pwd = pw; // Replace with your actual API key
+
+            // 1. Bind elements
+            const myTable = $('#myTable');
+            const myTbody = myTable.find('tbody');
+
+            // 2. Action (AJAX request to fetch data)
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "Json",
+                success: function (res) {
+                    console.log('res', res);
+                    let data = res.records.location[3].locationName;
+                    data = res.records.location;
+                    console.log('data', data);
+
+                    const thTime1 = $('#th-time1');
+                    const thTime2 = $('#th-time2');
+                    const thTime3 = $('#th-time3');
+                    // time1
+                    let startTime1 = data[0].weatherElement[2].time[0].startTime;
+                    let endTime1 = data[0].weatherElement[2].time[0].endTime;
+                    // console.log('startTime1', startTime1);
+                    // console.log('endTime1', endTime1);
+                    // 2025-02-04 06:00:00
+                    let tmpDate = startTime1.substr(0, 10);
+                    let tmpStartText = startTime1.substr(11, 2);
+                    let tmpEndText = endTime1.substr(11, 2);
+
+                    let tmpTypeTime1 = 'day';
+                    if (tmpStartText == '06') {
+                        tmpTypeTime1 = 'day';
+                    } else {
+                        tmpTypeTime1 = 'night';
+                    }
+                    // console.log('tmpDate', tmpDate);
+                    // console.log('tmpStartText', tmpStartText);
+                    // console.log('tmpEndText', tmpEndText);
+
+                    let textTime1 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
+                    // console.log('textTime1', textTime1);
+                    thTime1.text(textTime1);
+
+                    // time2
+                    let startTime2 = data[0].weatherElement[2].time[1].startTime;
+                    let endTime2 = data[0].weatherElement[2].time[1].endTime;
+                    // 2025-02-04 06:00:00
+                    tmpDate = startTime2.substr(0, 10);
+                    tmpStartText = startTime2.substr(11, 2);
+                    tmpEndText = endTime2.substr(11, 2);
+                    // console.log('tmpDate', tmpDate);
+                    // console.log('tmpStartText', tmpStartText);
+                    // console.log('tmpEndText', tmpEndText);
+
+                    let tmpTypeTime2 = 'day';
+                    if (tmpStartText == '06') {
+                        tmpTypeTime2 = 'day';
+                    } else {
+                        tmpTypeTime2 = 'night';
+                    }
+
+                    let textTime2 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
+                    // console.log('textTime2', textTime2);
+                    thTime2.text(textTime2);
+
+                    // time3
+                    let startTime3 = data[0].weatherElement[2].time[2].startTime;
+                    let endTime3 = data[0].weatherElement[2].time[2].endTime;
+                    // 2025-02-04 06:00:00
+                    tmpDate = startTime3.substr(0, 10);
+                    tmpStartText = startTime3.substr(11, 2);
+                    tmpEndText = endTime3.substr(11, 2);
+                    // console.log('tmpDate', tmpDate);
+                    // console.log('tmpStartText', tmpStartText);
+                    // console.log('tmpEndText', tmpEndText);
+
+                    // tmpStartText 06 day
+                    // tmpEndText 18 night
+
+
+                    let tmpTypeTime3 = 'day';
+                    if (tmpStartText == '06') {
+                        tmpTypeTime3 = 'day';
+                    } else {
+                        tmpTypeTime3 = 'night';
+                    }
+
+                    let textTime3 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
+                    // console.log('textTime3', textTime3);
+                    thTime3.text(textTime3);
+                    // 3. Append data to the table
+                    $.each(data, function (key, value) {
+                        let tmpLocationName = value.locationName;
+                        let tmpLocationID = key;
+                        let tmpWeatherElement = value.weatherElement;
+                        // minT
+                        let tmpMinTtime0 = tmpWeatherElement[2].time[0].parameter['parameterName'];
+                        let tmpMinTtime1 = tmpWeatherElement[2].time[1].parameter['parameterName'];
+                        let tmpMinTtime2 = tmpWeatherElement[2].time[2].parameter['parameterName'];
+                        // maxT
+                        let tmpMaxTtime0 = tmpWeatherElement[4].time[0].parameter['parameterName'];
+                        let tmpMaxTtime1 = tmpWeatherElement[4].time[1].parameter['parameterName'];
+                        let tmpMaxTtime2 = tmpWeatherElement[4].time[2].parameter['parameterName'];
+                        // wx
+                        let tmpWx0 = tmpWeatherElement[0].time[0].parameter['parameterValue'];
+                        let tmpWx1 = tmpWeatherElement[0].time[1].parameter['parameterValue'];
+                        let tmpWx2 = tmpWeatherElement[0].time[2].parameter['parameterValue'];
+
+                        let temText = `
+                            <tr>
+                                <td>${tmpLocationID + 1}</td>
+                                <td>${tmpLocationName}</td>
+                                <td>${tmpMinTtime0} - ${tmpMaxTtime0} 度c <img src="./${tmpTypeTime1}/${tmpWx0}.svg" alt="" srcset=""></td>
+                                <td>${tmpMinTtime1} - ${tmpMaxTtime1} 度c <img src="./${tmpTypeTime2}/${tmpWx1}.svg" alt="" srcset=""></td>
+                                <td>${tmpMinTtime2} - ${tmpMaxTtime2} 度c <img src="./${tmpTypeTime3}/${tmpWx2}.svg" alt="" srcset=""></td>
+                            </tr>
+                        `;
+                        $(myTbody).append(temText);
+                    });
+
+                    // 4. Initialize DataTable after data is loaded
+                    myTable.DataTable(); // This will initialize DataTables plugin
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
