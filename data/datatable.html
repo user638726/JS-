@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link css 順序 1.bs 2.self -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+    <script>
+
+    </script>
+
+</head>
+
+<body>
+
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+                <th>Column 5</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- datatable -->
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // var DataTable = require('datatables.net')(window, $);
+
+            let table = new DataTable('#myTable', {
+                // config options...
+            });
+
+
+        });
+
+        let data = [
+            {
+                "Name": "Airi Satou",
+                "Position": "Accountant",
+                "Office": "Tokyo",
+                "Age": 33,
+                "Start_date": "2008/11/28"
+            },
+            {
+                "Name": "Angelica Ramos",
+                "Position": "Chief Executive Officer (CEO)",
+                "Office": "London",
+                "Age": 47,
+                "Start_date": "2009/10/9"
+            },
+            {
+                "Name": "Ashton Cox",
+                "Position": "Junior Technical Author",
+                "Office": "San Francisco",
+                "Age": 66,
+                "Start_date": "2009/1/12"
+            },
+            {
+                "Name": "Bradley Greer",
+                "Position": "Software Engineer",
+                "Office": "London",
+                "Age": 41,
+                "Start_date": "2012/10/13"
+            },
+            {
+                "Name": "Brenden Wagner",
+                "Position": "Software Engineer",
+                "Office": "San Francisco",
+                "Age": 28,
+                "Start_date": "2011/6/7"
+            },
+            {
+                "Name": "Brielle Williamson",
+                "Position": "Integration Specialist",
+                "Office": "New York",
+                "Age": 61,
+                "Start_date": "2012/12/2"
+            },
+            {
+                "Name": "Bruno Nash",
+                "Position": "Software Engineer",
+                "Office": "London",
+                "Age": 38,
+                "Start_date": "2011/5/3"
+            },
+            {
+                "Name": "Caesar Vance",
+                "Position": "Pre-Sales Support",
+                "Office": "New York",
+                "Age": 21,
+                "Start_date": "2011/12/12"
+            },
+            {
+                "Name": "Cara Stevens",
+                "Position": "Sales Assistant",
+                "Office": "New York",
+                "Age": 46,
+                "Start_date": "2011/12/6"
+            },
+            {
+                "Name": "Cedric Kelly",
+                "Position": "Senior Javascript Developer",
+                "Office": "Edinburgh",
+                "Age": 22,
+                "Start_date": "2012/3/29"
+            },
+            {
+                "Name": "Charde Marshall",
+                "Position": "Regional Director",
+                "Office": "San Francisco",
+                "Age": 36,
+                "Start_date": "2008/10/16"
+            },
+            {
+                "Name": "Colleen Hurst",
+                "Position": "Javascript Developer",
+                "Office": "San Francisco",
+                "Age": 39,
+                "Start_date": "2009/9/15"
+            },
+            {
+                "Name": "Dai Rios",
+                "Position": "Personnel Lead",
+                "Office": "Edinburgh",
+                "Age": 35,
+                "Start_date": "2012/9/26"
+            },
+            {
+                "Name": "Donna Snider",
+                "Position": "Customer Support",
+                "Office": "New York",
+                "Age": 27,
+                "Start_date": "2011/1/25"
+            },
+            {
+                "Name": "Doris Wilder",
+                "Position": "Sales Assistant",
+                "Office": "Sydney",
+                "Age": 23,
+                "Start_date": "2010/9/20"
+            },
+            {
+                "Name": "Finn Camacho",
+                "Position": "Support Engineer",
+                "Office": "San Francisco",
+                "Age": 47,
+                "Start_date": "2009/7/7"
+            },
+            {
+                "Name": "Fiona Green",
+                "Position": "Chief Operating Officer (COO)",
+                "Office": "San Francisco",
+                "Age": 48,
+                "Start_date": "2010/3/11"
+            },
+            {
+                "Name": "Garrett Winters",
+                "Position": "Accountant",
+                "Office": "Tokyo",
+                "Age": 63,
+                "Start_date": "2011/7/25"
+            },
+            {
+                "Name": "Gavin Cortez",
+                "Position": "Team Leader",
+                "Office": "San Francisco",
+                "Age": 22,
+                "Start_date": "2008/10/26"
+            },
+            {
+                "Name": "Gavin Joyce",
+                "Position": "Developer",
+                "Office": "Edinburgh",
+                "Age": 42,
+                "Start_date": "2010/12/22"
+            },
+            {
+                "Name": "Gloria Little",
+                "Position": "Systems Administrator",
+                "Office": "New York",
+                "Age": 59,
+                "Start_date": "2009/4/10"
+            },
+            {
+                "Name": "Haley Kennedy",
+                "Position": "Senior Marketing Designer",
+                "Office": "London",
+                "Age": 43,
+                "Start_date": "2012/12/18"
+            },
+            {
+                "Name": "Hermione Butler",
+                "Position": "Regional Director",
+                "Office": "London",
+                "Age": 47,
+                "Start_date": "2011/3/21"
+            },
+            {
+                "Name": "Herrod Chandler",
+                "Position": "Sales Assistant",
+                "Office": "San Francisco",
+                "Age": 59,
+                "Start_date": "2012/8/6"
+            },
+            {
+                "Name": "Hope Fuentes",
+                "Position": "Secretary",
+                "Office": "San Francisco",
+                "Age": 41,
+                "Start_date": "2010/2/12"
+            },
+            {
+                "Name": "Howard Hatfield",
+                "Position": "Office Manager",
+                "Office": "San Francisco",
+                "Age": 51,
+                "Start_date": "2008/12/16"
+            },
+            {
+                "Name": "Jackson Bradshaw",
+                "Position": "Director",
+                "Office": "New York",
+                "Age": 65,
+                "Start_date": "2008/9/26"
+            },
+            {
+                "Name": "Jena Gaines",
+                "Position": "Office Manager",
+                "Office": "London",
+                "Age": 30,
+                "Start_date": "2008/12/19"
+            },
+            {
+                "Name": "Jenette Caldwell",
+                "Position": "Development Lead",
+                "Office": "New York",
+                "Age": 30,
+                "Start_date": "2011/9/3"
+            },
+            {
+                "Name": "Jennifer Acosta",
+                "Position": "Junior Javascript Developer",
+                "Office": "Edinburgh",
+                "Age": 43,
+                "Start_date": "2013/2/1"
+            },
+            {
+                "Name": "Jennifer Chang",
+                "Position": "Regional Director",
+                "Office": "Singapore",
+                "Age": 28,
+                "Start_date": "2010/11/14"
+            },
+            {
+                "Name": "Jonas Alexander",
+                "Position": "Developer",
+                "Office": "San Francisco",
+                "Age": 30,
+                "Start_date": "2010/7/14"
+            },
+            {
+                "Name": "Lael Greer",
+                "Position": "Systems Administrator",
+                "Office": "London",
+                "Age": 21,
+                "Start_date": "2009/2/27"
+            },
+            {
+                "Name": "Martena Mccray",
+                "Position": "Post-Sales support",
+                "Office": "Edinburgh",
+                "Age": 46,
+                "Start_date": "2011/3/9"
+            },
+            {
+                "Name": "Michael Bruce",
+                "Position": "Javascript Developer",
+                "Office": "Singapore",
+                "Age": 29,
+                "Start_date": "2011/6/27"
+            },
+            {
+                "Name": "Michael Silva",
+                "Position": "Marketing Designer",
+                "Office": "London",
+                "Age": 66,
+                "Start_date": "2012/11/27"
+            },
+            {
+                "Name": "Michelle House",
+                "Position": "Integration Specialist",
+                "Office": "Sydney",
+                "Age": 37,
+                "Start_date": "2011/6/2"
+            },
+            {
+                "Name": "Olivia Liang",
+                "Position": "Support Engineer",
+                "Office": "Singapore",
+                "Age": 64,
+                "Start_date": "2011/2/3"
+            },
+            {
+                "Name": "Paul Byrd",
+                "Position": "Chief Financial Officer (CFO)",
+                "Office": "New York",
+                "Age": 64,
+                "Start_date": "2010/6/9"
+            },
+            {
+                "Name": "Prescott Bartlett",
+                "Position": "Technical Author",
+                "Office": "London",
+                "Age": 27,
+                "Start_date": "2011/5/7"
+            }
+        ]
+        const myTable = $('#myTable');
+        const myTbody = myTable.find('tbody');
+        console.log(data[0].Name);
+        console.log(data[1].Name);
+        console.log(data.length);
+        for (let i = 0; i < data.length; i++) {
+            console.log(data[i].Name);
+            let temText = `
+            <tr>
+              <td>${data[i].Name}</td>
+              <td>${data[i].Position}</td>
+              <td>${data[i].Office}</td>
+              <td>${data[i].Age}</td>
+              <td>${data[i].Start_date}</td>
+            </tr>
+            
+            `;
+            $(myTbody).append(temText);
+        }
+    </script>
+</body>
+
+</html>
